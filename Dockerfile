@@ -16,7 +16,7 @@ WORKDIR /app
 
 # CORRECCIÓN: Copiamos el JAR con el nombre y la ruta correctos desde el módulo principal.
 # El JAR generado es 'diasfestivos-0.0.1-SNAPSHOT.jar'
-COPY --from=build /app/target/diasfestivos-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 # Ejecuta el JAR
