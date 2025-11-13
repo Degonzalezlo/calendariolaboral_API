@@ -5,7 +5,7 @@ version: 0.2
 # AWS_DEFAULT_REGION: us-east-2
 # IMAGE_REPO_NAME: api-monedas (nombre de tu repositorio ECR)
 # CONTAINER_NAME: api-monedas-container (nombre del contenedor en tu task-definition.json)
-
+# Se Debe compilar un proyecto Maven que genera un archivo .jar y luego construir una imagen en codebuild.
 phases:
   install:
     runtime-versions:
