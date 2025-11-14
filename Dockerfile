@@ -1,24 +1,23 @@
-# ======== FASE 1: BUILD ========
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+# ======== FASE 1: BUILD =========
+FROM public.ecr.aws/docker/library/maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copiar todo el código al contenedor
 COPY . .
 
-# Compilar el proyecto Maven
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -B
+RUN ls -lR target/
 
-# ======== FASE 2: RUNTIME ========
-FROM eclipse-temurin:21-jre-alpine
+# ======== FASE 2: RUNTIME =========
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
-# Copiar cualquier JAR generado desde target/
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8080
+RUN ls -l && file app.jar
 
-# Comando de arranque del microservicio
+EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
+
 
 
 
