@@ -1,23 +1,29 @@
 # Paso 1: FASE DE CONSTRUCCIÓN
-# Usamos una imagen de Maven que soporta JDK 21 para el proceso de compilación
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copia el código fuente
+# Copiamos todos los archivos al contenedor
 COPY . .
 
-# Compila el proyecto y genera el JAR final
-RUN mvn clean install -DskipTests
+# Ejecutamos Maven para compilar y generar el JAR sin tests, modo batch para logs limpios
+RUN mvn clean install -DskipTests -B
 
-# Paso 2: FASE DE EJECUCIÓN (Runtime)
-# Usamos una imagen OpenJDK más ligera (Slim) que solo contiene el JRE 21 necesario para ejecutar la aplicación
+# Listado del contenido generado en target para debug
+RUN ls -lR target/
+
+# Paso 2: FASE DE EJECUCIÓN (runtime)
 FROM openjdk:21-jdk-slim
 WORKDIR /app
 
-# CORRECCIÓN: Copiamos el JAR con el nombre y la ruta correctos desde el módulo principal.
-# El JAR generado es 'diasfestivos-0.0.1-SNAPSHOT.jar'
+# Copiamos el JAR generado desde el stage build
 COPY --from=build /app/target/*.jar app.jar
 
+# Listamos el contenido del workspace y del JAR para confirmar que está bien copiado
+RUN ls -l && \
+    file app.jar
+
 EXPOSE 8080
-# Ejecuta el JAR
+
+# Comando para ejecutar la aplicación
 CMD ["java", "-jar", "app.jar"]
+
