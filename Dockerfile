@@ -9,7 +9,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # ======== FASE 2: RUNTIME ========
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copiar cualquier JAR generado desde target/
