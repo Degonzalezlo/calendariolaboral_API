@@ -1,29 +1,24 @@
-# Paso 1: FASE DE CONSTRUCCIÓN
+# ======== FASE 1: BUILD ========
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copiamos todos los archivos al contenedor
+# Copiar todo el código al contenedor
 COPY . .
 
-# Ejecutamos Maven para compilar y generar el JAR sin tests, modo batch para logs limpios
-RUN mvn clean install -DskipTests -B
+# Compilar el proyecto Maven
+RUN mvn clean package -DskipTests
 
-# Listado del contenido generado en target para debug
-RUN ls -lR target/
-
-# Paso 2: FASE DE EJECUCIÓN (runtime)
+# ======== FASE 2: RUNTIME ========
 FROM openjdk:21-jdk-slim
 WORKDIR /app
 
-# Copiamos el JAR generado desde el stage build
+# Copiar cualquier JAR generado desde target/
 COPY --from=build /app/target/*.jar app.jar
-
-# Listamos el contenido del workspace y del JAR para confirmar que está bien copiado
-RUN ls -l && \
-    file app.jar
 
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación
+# Comando de arranque del microservicio
 CMD ["java", "-jar", "app.jar"]
+
+
 

@@ -1,0 +1,20 @@
+# Excluir el target local (el más importante)
+target/
+
+# Excluir archivos del repositorio y control de versiones
+.git/
+.gitignore
+
+# Excluir archivos del IDE
+.idea/
+*.iml
+
+# Excluir archivos de documentación o no necesarios
+README.md
+*.md
+
+# Excluir logs
+*.log
+
+# Excluir Dockerfile del contexto de build (opcional pero recomendado)
+Dockerfile
