@@ -9,7 +9,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto21
+      java: eclipse-temurin:21-jre
 
   pre_build:
     commands:
