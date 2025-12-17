@@ -8,7 +8,7 @@ RUN mvn clean package -DskipTests -B
 RUN ls -lR target/
 
 # ======== FASE 2: RUNTIME =========
-FROM eclipse-temurin:21-jre
+FROM public.ecr.aws/docker/library/eclipse-temurin:21-jre
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
