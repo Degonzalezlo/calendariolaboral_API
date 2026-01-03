@@ -12,7 +12,7 @@
       "image": "775696080147.dkr.ecr.us-east-1.amazonaws.com/api-calendariolaboral:1174377",
       "portMappings": [
         {
-          "containerPort": 8080,
+          "containerPort": 8081,
           "protocol": "tcp"
         }
       ],
