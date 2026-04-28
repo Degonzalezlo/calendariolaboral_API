@@ -12,7 +12,8 @@ import java.util.List;
 import com.festivos.diasfestivos.core.interfaces.servicios.IUsuarioServicio;
 import com.festivos.diasfestivos.dominio.DTOs.UsuarioLoginDto;
 import com.festivos.diasfestivos.dominio.entidades.Usuario;
-
+// Controlador REST para gestionar usuarios, proporcionando endpoints para operaciones CRUD y autenticación.
+//falta implementacion de capas de seguridad
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioControlador {

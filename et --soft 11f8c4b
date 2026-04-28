@@ -1,0 +1,22 @@
+[33m321a141[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m work in progress
+[33m02f73ae[m[33m ([m[1;31morigin/main[m[33m)[m update port 8081 .\task-definition.json
+[33mabe6f0c[m update .\task-definition.json
+[33m6756cb5[m update .\task-definition.json
+[33m56c6d2d[m change java version in buildspec.yml
+[33mc016664[m change java version in buildspec.yml
+[33m4c6c21d[m change java version in buildspec.yml
+[33mb3af6c1[m change java version in buildspec.yml
+[33m9a4f499[m Add .\task-definition.json
+[33m1174377[m Update Dockerfile
+[33m94f00b9[m Update Dockerfile
+[33m37dbe0f[m Update Dockerfile
+[33m6566285[m Add .dockerignore
+[33m09f8401[m update dockerfile COPY line
+[33m1a6934a[m update dockerfile again
+[33m16d63ec[m update dockerfile
+[33mc7aac6d[m update buildspec.yml corretto21 version
+[33m731baec[m Project compiled
+[33m01eb762[m Project for deployment on AWS
+[33m1750138[m Added API compiled and chain connections
+[33m11f8c4b[m first commit
+[33m5ebfdaa[m Added API compiled and shain connections
